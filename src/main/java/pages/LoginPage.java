@@ -16,19 +16,17 @@ public class LoginPage extends BasePage {
     By passwordLocator = By.id("password");
     By loginButtonLocator = By.id("logInButton");
 
-    private String strUserName;
-    private String strPassword;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
     public LoginPage clickRegisterClient() {
-        waitUntilClickable(registerClient);
-        driver.findElement(registerClient);
+        waitUntilClickable(driver.findElement(registerClient));
+        driver.findElement(registerClient).click();
         return this;
     }
-    
+
 
     public LoginPage registerClient(String strClientName) {
         driver.findElement(clientLocator).sendKeys(strClientName);
@@ -41,11 +39,13 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage typePassword(String strPassword) {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(passwordLocator).sendKeys(strPassword);
         return this;
     }
 
     public LoginPage clickLogin() {
+        waitUntilClickable(driver.findElement(loginButtonLocator));
         driver.findElement(loginButtonLocator).click();
         return this;
     }
@@ -53,16 +53,17 @@ public class LoginPage extends BasePage {
     /**
      * This POM method will be exposed in test case to login in the application
      * @param strUserName
-     * @param strPasword
+     * @param strPassword
+     * @param strClientName
      * @return
      */
-    public void loginToAutoQA(String strClientName, String strUserName,String strPasword){
+    public void loginToAutoQA(String strClientName, String strUserName,String strPassword){
         this.registerClient(strClientName)
             .clickRegisterClient();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //Fill user name
         typeUsername(strUserName)
-                .typePassword(strPasword)
+                .typePassword(strPassword)
                 .clickLogin();
     }
 

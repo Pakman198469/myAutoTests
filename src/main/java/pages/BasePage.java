@@ -25,9 +25,9 @@ public class BasePage {
         wait = new WebDriverWait(driver,5);
     }
 
-    public void waitUntilClickable(TypifiedElement element) {
+    /*public void waitUntilClickable(TypifiedElement element) {
         waitUntilClickable(element.getWrappedElement());
-    }
+    }*/
 
     public void waitUntilClickable(WebElement element) {
         wait

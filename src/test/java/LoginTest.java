@@ -25,11 +25,14 @@ public class LoginTest {
     }
 
     @Test
-    public void testLoginSuccess() {
-        page.registerClient("client")
-                .clickRegisterClient()
-                .typeUsername("username")
-                .typePassword("********")
+    public void registerSuccess() {
+        page.registerClient("globoforce")
+                .clickRegisterClient();
+        page.typeUsername("768604")
+                .typePassword("7686041")
                 .clickLogin();
+
     }
+
+
 }

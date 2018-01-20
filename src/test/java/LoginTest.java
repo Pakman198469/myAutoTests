@@ -30,8 +30,8 @@ public class LoginTest {
     @Test
     public void registerSuccess() {
         page.registerClient("globoforce")
-                .clickRegisterClient();
-        page.typeUsername("768604")
+                .clickRegisterClient()
+                .typeUsername("768604")
                 .typePassword("7686041")
                 .clickLogin();
 

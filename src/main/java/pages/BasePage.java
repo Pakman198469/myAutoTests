@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Aleh_Hutyrchyk on 1/8/2018.
  */
 
+
 public class BasePage {
     WebDriver driver;
     protected final WebDriverWait wait;
